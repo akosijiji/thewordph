@@ -1,0 +1,29 @@
+<div *ngIf="quote" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="quote._id">Quote Details</h2>
+    <h2 *ngIf="!quote._id">New Quote</h2>
+  </div>
+</div>
+<div *ngIf="quote" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="quote-name">Name</label>
+      <input class="form-control" name="quote-name" [(ngModel)]="quote.name" placeholder="Name"/>
+    </div>
+    <div class="form-group">
+      <label for="quote-email">Quote</label>
+      <input class="form-control" name="quote-quote" [(ngModel)]="quote.quote" placeholder="support@mlab.com"/>
+    </div>
+    <!-- <div class="form-group">
+      <label for="quote-phone-mobile">Mobile</label>
+      <input class="form-control" name="quote-phone-mobile" [(ngModel)]="quote.phone.mobile" placeholder="1234567890"/>
+    </div>
+    <div class="form-group">
+      <label for="quote-phone-work">Work</label>
+      <input class="form-control" name="quote-phone-work" [(ngModel)]="quote.phone.work" placeholder="0123456789"/>
+    </div> -->
+    <button class="btn btn-primary" *ngIf="!quote._id" (click)="createQuote(quote)">Create</button>
+    <button class="btn btn-info" *ngIf="quote._id" (click)="updateQuote(quote)">Update</button>
+    <button class="btn btn-danger" *ngIf="quote._id" (click)="deleteQuote(quote._id)">Delete</button>
+  </form>
+</div>
