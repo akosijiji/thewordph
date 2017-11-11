@@ -58,9 +58,9 @@ app.get("/api/quotes", function(req, res) {
 
 app.post("/api/quotes", function(req, res) {
   var newQuote = req.body;
-
-  if (!req.body.name) {
-    handleError(res, "Invalid user input", "Must provide a name.", 400);
+  
+  if (!req.body.name && !req.body.quote) {
+    handleError(res, "Invalid user input", "Invalid parameters.", 400);
   }
 
   db.collection(QUOTES_COLLECTION).insertOne(newQuote, function(err, doc) {
